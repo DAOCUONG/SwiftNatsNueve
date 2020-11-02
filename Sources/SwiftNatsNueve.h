@@ -1,12 +1,12 @@
 //
-//  SwiftNats.h
-//  SwiftNats
+//  SwiftNatsNueve.h
+//  SwiftNatsNueve
 //
-//  Created by kakilangit on 1/21/16.
-//  Copyright © 2016 Travelish. All rights reserved.
+//  Created by Denis Kozhukhov on 11/03/2020.
+//  Copyright © 2020 Denis Kozhukhov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for SwiftNats.
 FOUNDATION_EXPORT double SwiftNatsVersionNumber;

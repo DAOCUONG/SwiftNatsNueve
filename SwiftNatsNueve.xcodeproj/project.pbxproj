@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		8F1051111C58781D008EA2E8 /* DelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F10510F1C587817008EA2E8 /* DelegateTests.swift */; };
 		8F1051131C588603008EA2E8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8F1051121C588603008EA2E8 /* LICENSE */; };
-		8F4EA2011C50BDFD0051E0DC /* SwiftNats.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F4EA2001C50BDFD0051E0DC /* SwiftNats.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8F4EA2081C50BDFD0051E0DC /* SwiftNats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4EA1FD1C50BDFD0051E0DC /* SwiftNats.framework */; };
+		8F4EA2011C50BDFD0051E0DC /* SwiftNatsNueve.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F4EA2001C50BDFD0051E0DC /* SwiftNatsNueve.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8F4EA2081C50BDFD0051E0DC /* SwiftNatsNueve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4EA1FD1C50BDFD0051E0DC /* SwiftNatsNueve.framework */; };
 		8F4EA20D1C50BDFD0051E0DC /* ConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4EA20C1C50BDFD0051E0DC /* ConnectTests.swift */; };
-		8F4EA2181C50BE2C0051E0DC /* SwiftNats.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8F4EA2171C50BE2C0051E0DC /* SwiftNats.podspec */; };
+		8F4EA2181C50BE2C0051E0DC /* SwiftNatsNueve.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8F4EA2171C50BE2C0051E0DC /* SwiftNatsNueve.podspec */; };
 		8F4EA21A1C50BEC60051E0DC /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4EA2191C50BEC60051E0DC /* Protocol.swift */; };
 		8F4EA21C1C50BED80051E0DC /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4EA21B1C50BED80051E0DC /* Connection.swift */; };
 		8F4EA21E1C50BF210051E0DC /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4EA21D1C50BF210051E0DC /* Extension.swift */; };
-		8FC9A6DF1C5A8ED600717470 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8FC9A6DE1C5A8ED600717470 /* README.md */; };
+		92707D7D255099ED005C964B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8FC9A6DE1C5A8ED600717470 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,13 +32,13 @@
 /* Begin PBXFileReference section */
 		8F10510F1C587817008EA2E8 /* DelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegateTests.swift; sourceTree = "<group>"; };
 		8F1051121C588603008EA2E8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		8F4EA1FD1C50BDFD0051E0DC /* SwiftNats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftNats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F4EA2001C50BDFD0051E0DC /* SwiftNats.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftNats.h; sourceTree = "<group>"; };
+		8F4EA1FD1C50BDFD0051E0DC /* SwiftNatsNueve.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftNatsNueve.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F4EA2001C50BDFD0051E0DC /* SwiftNatsNueve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftNatsNueve.h; sourceTree = "<group>"; };
 		8F4EA2021C50BDFD0051E0DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8F4EA2071C50BDFD0051E0DC /* SwiftNatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftNatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F4EA2071C50BDFD0051E0DC /* SwiftNatsNueveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftNatsNueveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F4EA20C1C50BDFD0051E0DC /* ConnectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectTests.swift; sourceTree = "<group>"; };
 		8F4EA20E1C50BDFD0051E0DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8F4EA2171C50BE2C0051E0DC /* SwiftNats.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftNats.podspec; sourceTree = "<group>"; };
+		8F4EA2171C50BE2C0051E0DC /* SwiftNatsNueve.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftNatsNueve.podspec; sourceTree = "<group>"; };
 		8F4EA2191C50BEC60051E0DC /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		8F4EA21B1C50BED80051E0DC /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		8F4EA21D1C50BF210051E0DC /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -57,26 +57,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F4EA2081C50BDFD0051E0DC /* SwiftNats.framework in Frameworks */,
+				8F4EA2081C50BDFD0051E0DC /* SwiftNatsNueve.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8F1051151C588B77008EA2E8 /* Exclude */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Exclude;
-			sourceTree = "<group>";
-		};
 		8F4EA1F31C50BDFD0051E0DC = {
 			isa = PBXGroup;
 			children = (
 				8FC9A6DE1C5A8ED600717470 /* README.md */,
 				8F1051121C588603008EA2E8 /* LICENSE */,
-				8F4EA2171C50BE2C0051E0DC /* SwiftNats.podspec */,
+				8F4EA2171C50BE2C0051E0DC /* SwiftNatsNueve.podspec */,
 				8F4EA1FF1C50BDFD0051E0DC /* Sources */,
 				8F4EA20B1C50BDFD0051E0DC /* Tests */,
 				8F4EA1FE1C50BDFD0051E0DC /* Products */,
@@ -86,8 +79,8 @@
 		8F4EA1FE1C50BDFD0051E0DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8F4EA1FD1C50BDFD0051E0DC /* SwiftNats.framework */,
-				8F4EA2071C50BDFD0051E0DC /* SwiftNatsTests.xctest */,
+				8F4EA1FD1C50BDFD0051E0DC /* SwiftNatsNueve.framework */,
+				8F4EA2071C50BDFD0051E0DC /* SwiftNatsNueveTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,8 +88,7 @@
 		8F4EA1FF1C50BDFD0051E0DC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8F1051151C588B77008EA2E8 /* Exclude */,
-				8F4EA2001C50BDFD0051E0DC /* SwiftNats.h */,
+				8F4EA2001C50BDFD0051E0DC /* SwiftNatsNueve.h */,
 				8F4EA2021C50BDFD0051E0DC /* Info.plist */,
 				8F4EA21B1C50BED80051E0DC /* Connection.swift */,
 				8F4EA2191C50BEC60051E0DC /* Protocol.swift */,
@@ -122,16 +114,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F4EA2011C50BDFD0051E0DC /* SwiftNats.h in Headers */,
+				8F4EA2011C50BDFD0051E0DC /* SwiftNatsNueve.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8F4EA1FC1C50BDFD0051E0DC /* SwiftNats */ = {
+		8F4EA1FC1C50BDFD0051E0DC /* SwiftNatsNueve */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8F4EA2111C50BDFD0051E0DC /* Build configuration list for PBXNativeTarget "SwiftNats" */;
+			buildConfigurationList = 8F4EA2111C50BDFD0051E0DC /* Build configuration list for PBXNativeTarget "SwiftNatsNueve" */;
 			buildPhases = (
 				8F4EA1F81C50BDFD0051E0DC /* Sources */,
 				8F4EA1F91C50BDFD0051E0DC /* Frameworks */,
@@ -142,14 +134,14 @@
 			);
 			dependencies = (
 			);
-			name = SwiftNats;
+			name = SwiftNatsNueve;
 			productName = SwiftNats;
-			productReference = 8F4EA1FD1C50BDFD0051E0DC /* SwiftNats.framework */;
+			productReference = 8F4EA1FD1C50BDFD0051E0DC /* SwiftNatsNueve.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		8F4EA2061C50BDFD0051E0DC /* SwiftNatsTests */ = {
+		8F4EA2061C50BDFD0051E0DC /* SwiftNatsNueveTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8F4EA2141C50BDFD0051E0DC /* Build configuration list for PBXNativeTarget "SwiftNatsTests" */;
+			buildConfigurationList = 8F4EA2141C50BDFD0051E0DC /* Build configuration list for PBXNativeTarget "SwiftNatsNueveTests" */;
 			buildPhases = (
 				8F4EA2031C50BDFD0051E0DC /* Sources */,
 				8F4EA2041C50BDFD0051E0DC /* Frameworks */,
@@ -160,9 +152,9 @@
 			dependencies = (
 				8F4EA20A1C50BDFD0051E0DC /* PBXTargetDependency */,
 			);
-			name = SwiftNatsTests;
+			name = SwiftNatsNueveTests;
 			productName = SwiftNatsTests;
-			productReference = 8F4EA2071C50BDFD0051E0DC /* SwiftNatsTests.xctest */;
+			productReference = 8F4EA2071C50BDFD0051E0DC /* SwiftNatsNueveTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -185,11 +177,12 @@
 					};
 				};
 			};
-			buildConfigurationList = 8F4EA1F71C50BDFD0051E0DC /* Build configuration list for PBXProject "SwiftNats" */;
+			buildConfigurationList = 8F4EA1F71C50BDFD0051E0DC /* Build configuration list for PBXProject "SwiftNatsNueve" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 8F4EA1F31C50BDFD0051E0DC;
@@ -197,8 +190,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8F4EA1FC1C50BDFD0051E0DC /* SwiftNats */,
-				8F4EA2061C50BDFD0051E0DC /* SwiftNatsTests */,
+				8F4EA1FC1C50BDFD0051E0DC /* SwiftNatsNueve */,
+				8F4EA2061C50BDFD0051E0DC /* SwiftNatsNueveTests */,
 			);
 		};
 /* End PBXProject section */
@@ -208,8 +201,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92707D7D255099ED005C964B /* README.md in Resources */,
 				8F1051131C588603008EA2E8 /* LICENSE in Resources */,
-				8F4EA2181C50BE2C0051E0DC /* SwiftNats.podspec in Resources */,
+				8F4EA2181C50BE2C0051E0DC /* SwiftNatsNueve.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +223,6 @@
 			files = (
 				8F4EA21E1C50BF210051E0DC /* Extension.swift in Sources */,
 				8F4EA21A1C50BEC60051E0DC /* Protocol.swift in Sources */,
-				8FC9A6DF1C5A8ED600717470 /* README.md in Sources */,
 				8F4EA21C1C50BED80051E0DC /* Connection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,7 +241,7 @@
 /* Begin PBXTargetDependency section */
 		8F4EA20A1C50BDFD0051E0DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8F4EA1FC1C50BDFD0051E0DC /* SwiftNats */;
+			target = 8F4EA1FC1C50BDFD0051E0DC /* SwiftNatsNueve */;
 			targetProxy = 8F4EA2091C50BDFD0051E0DC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -293,7 +286,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -337,7 +330,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -360,11 +353,12 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 5.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.travelish.SwiftNats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -380,10 +374,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 5.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.travelish.SwiftNats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -412,7 +407,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8F4EA1F71C50BDFD0051E0DC /* Build configuration list for PBXProject "SwiftNats" */ = {
+		8F4EA1F71C50BDFD0051E0DC /* Build configuration list for PBXProject "SwiftNatsNueve" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8F4EA20F1C50BDFD0051E0DC /* Debug */,
@@ -421,7 +416,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8F4EA2111C50BDFD0051E0DC /* Build configuration list for PBXNativeTarget "SwiftNats" */ = {
+		8F4EA2111C50BDFD0051E0DC /* Build configuration list for PBXNativeTarget "SwiftNatsNueve" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8F4EA2121C50BDFD0051E0DC /* Debug */,
@@ -430,7 +425,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8F4EA2141C50BDFD0051E0DC /* Build configuration list for PBXNativeTarget "SwiftNatsTests" */ = {
+		8F4EA2141C50BDFD0051E0DC /* Build configuration list for PBXNativeTarget "SwiftNatsNueveTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8F4EA2151C50BDFD0051E0DC /* Debug */,

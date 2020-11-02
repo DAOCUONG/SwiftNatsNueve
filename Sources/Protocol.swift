@@ -1,9 +1,9 @@
 //
 //  NatsStreamDelegate.swift
-//  SwiftNats
+//  SwiftNatsNueve
 //
-//  Created by kakilangit on 1/21/16.
-//  Copyright © 2016 Travelish. All rights reserved.
+//  Created by Denis Kozhukhov on 11/03/2020.
+//  Copyright © 2020 Denis Kozhukhov. All rights reserved.
 //
 
 public protocol NatsDelegate: class {
@@ -21,10 +21,10 @@ public struct NatsSubscription {
 
 	func sub() -> String {
 		let group: () -> String = {
-			if self.queueGroup.characters.count > 0 {
-				return "\(self.queueGroup) "
+			if queueGroup.count > 0 {
+				return "\(queueGroup) "
 			}
-			return self.queueGroup
+			return queueGroup
 		}
 
 		return "\(Proto.SUB.rawValue) \(subject) \(group())\(id)\r\n"
@@ -37,11 +37,11 @@ public struct NatsSubscription {
 			}
 			return ""
 		}
-		return "\(Proto.UNSUB.rawValue) \(id)\(wait)\r\n"
+        return "\(Proto.UNSUB.rawValue) \(id)\(String(describing: wait))\r\n"
 	}
 
 	mutating func counter() {
-		self.count += 1
+		count += 1
 	}
 }
 
@@ -81,8 +81,8 @@ internal struct Server {
 		self.go = data["go"] as! String
 		self.host = data["host"] as! String
 		self.port = data["port"] as! UInt
-		self.authRequired = data["auth_required"] as! Bool
-		self.sslRequired = data["ssl_required"] as! Bool
+		self.authRequired = data["auth_required"] as? Bool ?? false
+		self.sslRequired = data["ssl_required"] as? Bool ?? false
 		self.maxPayload = data["max_payload"] as! UInt
 	}
 }

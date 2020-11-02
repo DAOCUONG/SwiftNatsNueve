@@ -1,9 +1,9 @@
 //
 //  Connection.swift
-//  SwiftNats
+//  SwiftNatsNueve
 //
-//  Created by kakilangit on 1/21/16.
-//  Copyright © 2016 Travelish. All rights reserved.
+//  Created by Denis Kozhukhov on 11/03/2020.
+//  Copyright © 2020 Denis Kozhukhov. All rights reserved.
 //
 //  http://nats.io/documentation/internals/nats-protocol/
 
@@ -13,7 +13,7 @@ open class Nats: NSObject, StreamDelegate {
 	open var queue = DispatchQueue.main
 	open weak var delegate: NatsDelegate?
 
-	let version = "3.0.0-alpha.1"
+	let version = "5.0.0"
 	let lang = "swift"
 	let name = "SwiftNats"
 	let MaxFrameSize: Int = 32
@@ -35,11 +35,11 @@ open class Nats: NSObject, StreamDelegate {
 	fileprivate var isRunLoop: Bool = false
 
 	open var connectionId: String? {
-		return id
+		id
 	}
 
 	open var isConnected: Bool {
-		return connected
+		connected
 	}
 
 	/**
@@ -68,18 +68,20 @@ open class Nats: NSObject, StreamDelegate {
 	 *
 	 */
 	open func connect() {
-		self.open()
+		open()
 
-		guard let newReadStream = inputStream, let newWriteStream = outputStream else { return }
-		guard isConnected else { return }
+		guard let newReadStream = inputStream,
+              let newWriteStream = outputStream,
+              isConnected
+        else { return }
 
 		for stream in [newReadStream, newWriteStream] {
 			stream.delegate = self
-			stream.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+            stream.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
 		}
 
 		// NSRunLoop
-		RunLoop.current.run(mode: RunLoopMode.defaultRunLoopMode, before: Date.distantFuture as Date)
+        RunLoop.current.run(mode: RunLoop.Mode.default, before: Date.distantFuture as Date)
 	}
 
 	/**
@@ -88,14 +90,14 @@ open class Nats: NSObject, StreamDelegate {
 	 *
 	 */
 	open func reconnect(_ url: String, verbose: Bool = true, pedantic: Bool = false) {
-		self.option(url, verbose: verbose, pedantic: pedantic)
-		guard !isConnected else {
-			didDisconnect(nil)
-			self.reconnect(url, verbose: verbose, pedantic: pedantic)
-			return
-		}
+		option(url, verbose: verbose, pedantic: pedantic)
+        guard !isConnected else {
+            didDisconnect(nil)
+            self.reconnect(url, verbose: verbose, pedantic: pedantic)
+            return
+        }
 
-		self.connect()
+		connect()
 	}
 
 	/**
@@ -129,7 +131,7 @@ open class Nats: NSObject, StreamDelegate {
 	open func unsubscribe(_ subject: String, max: UInt32 = 0) {
 		guard let sub = subscriptions.filter({ $0.subject == subject }).first else { return }
 
-		subscriptions = subscriptions.filter({ $0.id != sub.id })
+		subscriptions = subscriptions.filter { $0.id != sub.id }
 		sendText(sub.unsub(max))
 	}
 
@@ -202,17 +204,21 @@ open class Nats: NSObject, StreamDelegate {
 	 *
 	 */
 	fileprivate func open() {
-		guard !isConnected else { return }
-		guard let host = url.host, let port = url.port else { return }
+		guard !isConnected,
+              let host = url.host,
+              let port = url.port
+        else { return }
 
 		var readStream: Unmanaged<CFReadStream>?
 		var writeStream: Unmanaged<CFWriteStream>?
 
-		CFStreamCreatePairWithSocketToHost(nil, host as CFString!, UInt32(port), &readStream, &writeStream) // -> send
+        CFStreamCreatePairWithSocketToHost(nil, host as CFString?, UInt32(port), &readStream, &writeStream) // -> send
 		inputStream = readStream!.takeRetainedValue()
 		outputStream = writeStream!.takeRetainedValue()
 
-		guard let inStream = inputStream, let outStream = outputStream else { return }
+		guard let inStream = inputStream,
+              let outStream = outputStream
+        else { return }
 
 		inStream.open()
 		outStream.open()
@@ -243,7 +249,9 @@ open class Nats: NSObject, StreamDelegate {
 				return
 			}
 
-			guard let user = self.url?.user, let password = self.url?.password else {
+			guard let user = self.url?.user,
+                  let password = self.url?.password
+            else {
 				throw NSError(domain: NSURLErrorDomain, code: 400, userInfo: [NSLocalizedDescriptionKey: "User/Password Required"])
 			}
 
@@ -286,8 +294,8 @@ open class Nats: NSObject, StreamDelegate {
 	 *
 	 */
 	fileprivate func didConnect() {
-		self.id = String.randomize("CONN_", length: 10)
-		self.connected = true
+		id = String.randomize("CONN_", length: 10)
+		connected = true
 		queue.async { [weak self] in
 			guard let s = self else { return }
             s.delegate?.natsDidConnect(nats:s)
@@ -302,14 +310,16 @@ open class Nats: NSObject, StreamDelegate {
 	 *
 	 */
 	fileprivate func didDisconnect(_ err: NSError?) {
-		self.connected = false
+		connected = false
 		queue.async { [weak self] in
-			guard let s = self else { return }
-			guard let newReadStream = s.inputStream, let newWriteStream = s.outputStream else { return }
+			guard let s = self,
+                  let newReadStream = s.inputStream,
+                  let newWriteStream = s.outputStream
+            else { return }
 
 			for stream in [newReadStream, newWriteStream] {
 				stream.delegate = nil
-				stream.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+                stream.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
 				stream.close()
 			}
 
@@ -326,8 +336,9 @@ open class Nats: NSObject, StreamDelegate {
 		guard isConnected else { return }
 
 		writeQueue.addOperation { [weak self] in
-			guard let s = self else { return }
-			guard let stream = s.outputStream else { return }
+			guard let s = self,
+                  let stream = s.outputStream
+            else { return }
 
 			stream.writeStreamLoop(data)
 		}

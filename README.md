@@ -1,21 +1,23 @@
-# SwiftNats
-Swift 3.0 client for NATS, the cloud native messaging system. https://nats.io
+# SwiftNatsNueve
+Swift 5.0 client for NATS, the cloud native messaging system. https://nats.io
 
-For Swift 2 version, please check branch Swift2.3
+Fork from https://github.com/travelish/SwiftNats library owned by @kakilangit.
+
+For Swift version 2, 3 and 4, please check original library or other forks.
 
 ## Install
 #### CocoaPods
 
-    platform :ios, '8.0'
+    platform :ios, '11.0'
     use_frameworks!
 
-    pod 'SwiftNats', '~> 3.0.0.alpha.1'
+    pod 'SwiftNatsNueve', '~> 5.0.0'
 
 ## Usage
 
 Import the package
 
-    import SwiftNats
+    import SwiftNatsNueve
 
 Declare it with strong reference
 
@@ -66,7 +68,7 @@ Why use strong reference a.k.a property? Because of NSStreamDelegate is weak & u
     unowned(unsafe) var delegate: NSStreamDelegate?
 
 
-## To do
+## To do (from original library)
 
 * Synchronous Messaging.
 * Request Reply.
@@ -76,9 +78,9 @@ Why use strong reference a.k.a property? Because of NSStreamDelegate is weak & u
 
 The MIT License (MIT)
 
-Copyright (c) 2016 kakilangit
+Copyright (c) 2020 Denis Kozhukhov
 
-theguywhodrinkscoffeeandcodes@gmail.com
+denis@mrsnow.info
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

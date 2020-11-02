@@ -1,14 +1,14 @@
 //
 //  Extension.swift
-//  SwiftNats
+//  SwiftNatsNueve
 //
-//  Created by kakilangit on 1/21/16.
-//  Copyright © 2016 Travelish. All rights reserved.
+//  Created by Denis Kozhukhov on 11/03/2020.
+//  Copyright © 2020 Denis Kozhukhov. All rights reserved.
 //
 
 extension Data {
 	func toString() -> String? {
-		return NSString(data: self, encoding: String.Encoding.utf8.rawValue) as String?
+		NSString(data: self, encoding: String.Encoding.utf8.rawValue) as String?
 	}
 }
 
@@ -30,11 +30,11 @@ extension InputStream {
 
 		guard !dataQueue.isEmpty else { return nil }
 
-		let data = dataQueue.reduce(Data(), {
+		let data = dataQueue.reduce(Data()) {
 			var combined = NSData(data: $0) as Data
 			combined.append($1)
 			return combined
-		})
+		}
 
 		// print("readStream \(data.toString())")
 
@@ -42,11 +42,11 @@ extension InputStream {
 	}
 
 	func readStreamLoop() -> String? {
-		while (true) {
+		while true {
 			if self.hasBytesAvailable {
-				return self.readStream()?.toString()
+				return readStream()?.toString()
 			}
-			if (self.streamError != nil) { break }
+			if streamError != nil { break }
 		}
 
 		return nil
@@ -56,18 +56,18 @@ extension InputStream {
 extension OutputStream {
 	func writeStream(_ data: Data) {
 		let bytes = (data as NSData).bytes.bindMemory(to: UInt8.self, capacity: data.count)
-		_ = self.write(bytes, maxLength: data.count)
+		_ = write(bytes, maxLength: data.count)
 
 		// print("writeStream \(data.toString())")
 	}
 
 	func writeStreamLoop(_ data: Data) {
-		while (true) {
-			if self.hasSpaceAvailable {
-				self.writeStream(data)
+		while true {
+			if hasSpaceAvailable {
+				writeStream(data)
 				break
 			}
-			if self.streamError != nil { break }
+			if streamError != nil { break }
 		}
 	}
 }
@@ -75,19 +75,20 @@ extension OutputStream {
 extension String
 {
     var unicode: [UnicodeScalar] {
-        return unicodeScalars.filter{$0.isASCII}.map{$0}
+        unicodeScalars.filter { $0.isASCII }.map { $0 }
     }
     
 	func flattenedMessage() -> String {
-        return self.components(separatedBy: CharacterSet.newlines).reduce("", {$0 + $1})
+        components(separatedBy: CharacterSet.newlines).reduce("", { $0 + $1 })
 	}
 
 	func removePrefix(_ prefix: String) -> String {
-        return self.substring(from: self.index(self.startIndex, offsetBy: prefix.characters.count))
+        let indexOfPrefixEnd = self.index(self.startIndex, offsetBy: prefix.count)
+        return String(suffix(from: indexOfPrefixEnd))
 	}
 
 	func convertToDictionary() -> [String: AnyObject]? {
-		if let data = self.data(using: String.Encoding.utf8) {
+		if let data = data(using: String.Encoding.utf8) {
 			do {
 				return try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject]
 			} catch let error as NSError {
@@ -99,7 +100,7 @@ extension String
 
 	static func randomize(_ prefix: String = "", length: Int = 0) -> String {
 
-		let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".characters
+		let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 		let lettersLength = UInt32(letters.count)
 
 		let randomCharacters = (0..<length).map { i -> String in

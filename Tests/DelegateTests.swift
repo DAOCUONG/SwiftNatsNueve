@@ -1,9 +1,9 @@
 //
 //  DelegateTests.swift
-//  SwiftNatsTests
+//  SwiftNatsNueveTests
 //
-//  Created by kakilangit on 1/27/16.
-//  Copyright © 2016 Travelish. All rights reserved.
+//  Created by Denis Kozhukhov on 11/03/2020.
+//  Copyright © 2020 Denis Kozhukhov. All rights reserved.
 //
 
 import XCTest
