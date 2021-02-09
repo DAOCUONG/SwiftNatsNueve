@@ -46,10 +46,10 @@ public struct NatsSubscription {
 }
 
 public struct NatsMessage {
-	let subject: String
-	let count: UInt
-	var reply: String?
-	var payload: String?
+	public let subject: String
+	public let count: UInt
+	public var reply: String?
+	public var payload: String?
 }
 
 internal enum Proto: String {
