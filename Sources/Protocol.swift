@@ -82,7 +82,7 @@ internal struct Server {
 		self.host = data["host"] as! String
 		self.port = data["port"] as! UInt
 		self.authRequired = data["auth_required"] as? Bool ?? false
-		self.sslRequired = data["ssl_required"] as? Bool ?? false
+		self.sslRequired = data["tls_required"] as? Bool ?? false
 		self.maxPayload = data["max_payload"] as! UInt
 	}
 }

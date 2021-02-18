@@ -74,7 +74,12 @@ open class Nats: NSObject, StreamDelegate {
               let newWriteStream = outputStream,
               isConnected
         else { return }
-
+        
+        if let _ = self.server?.sslRequired {
+            inputStream?.setProperty(kCFStreamSocketSecurityLevelNegotiatedSSL, forKey:  Stream.PropertyKey.socketSecurityLevelKey)
+            outputStream?.setProperty(kCFStreamSocketSecurityLevelNegotiatedSSL, forKey: Stream.PropertyKey.socketSecurityLevelKey)
+            
+        }
 		for stream in [newReadStream, newWriteStream] {
 			stream.delegate = self
             stream.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
