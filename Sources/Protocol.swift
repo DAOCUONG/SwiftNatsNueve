@@ -50,6 +50,7 @@ public struct NatsMessage {
 	public let count: UInt
 	public var reply: String?
 	public var payload: String?
+    public let data: Data?
 }
 
 internal enum Proto: String {

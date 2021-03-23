@@ -177,9 +177,36 @@ open class Nats: NSObject, StreamDelegate {
 		case inputStream!:
 			switch eventCode {
 			case [.hasBytesAvailable]:
-				if let string = inputStream?.readStream()?.toString() {
-					dispatchInputStream(string)
+                guard let data = inputStream?.readStream() else {
+                    break
+                }
+                let splitData = "\r\n".data(using: .utf8, allowLossyConversion: true)
+                let coms = data.split(separator: splitData!)
+
+				if let string = data.toString() {
+                    if coms.count == 2 {
+                        dispatchInputStream(string,coms[1])
+                        
+                    }else {
+                        
+                        dispatchInputStream(string,nil)
+
+                    }
+                    break
 				}
+                if let asciiString = String(data: data, encoding: .ascii) {
+                    if coms.count == 2 {
+                        dispatchInputStream(asciiString,coms[1])
+                        
+                    }else {
+                        
+                        dispatchInputStream(asciiString,nil)
+
+                    }
+
+                    break
+                }
+                
 				break
 			case [.errorOccurred]:
 				didDisconnect(inputStream?.streamError as NSError?)
@@ -365,7 +392,7 @@ open class Nats: NSObject, StreamDelegate {
 	 * routing received message from NSStreamDelegate
 	 *
 	 */
-	fileprivate func dispatchInputStream(_ msg: String) {
+    fileprivate func dispatchInputStream(_ msg: String, _ data: Data?) {
 		if msg.hasPrefix(Proto.PING.rawValue) {
 			processPing()
 		} else if msg.hasPrefix(Proto.OK.rawValue) {
@@ -373,7 +400,7 @@ open class Nats: NSObject, StreamDelegate {
 		} else if msg.hasPrefix(Proto.ERR.rawValue) {
 			processErr(msg.removePrefix(Proto.ERR.rawValue))
 		} else if msg.hasPrefix(Proto.MSG.rawValue) {
-			processMessage(msg)
+			processMessage(msg,data)
 		}
 	}
 
@@ -382,12 +409,12 @@ open class Nats: NSObject, StreamDelegate {
 	 * processMessage
 	 *
 	 */
-	fileprivate func processMessage(_ msg: String) {
-		let components = msg.components(separatedBy: CharacterSet.newlines).filter { !$0.isEmpty }
+    fileprivate func processMessage(_ msg: String, _ data: Data?) {
+        let components = msg.split(separator: "\r\n").filter { !$0.isEmpty }
 
 		guard components.count > 0 else { return }
 
-		let header = components[0]
+		let header = String(components[0])
             .removePrefix(Proto.MSG.rawValue)
             .components(separatedBy: CharacterSet.whitespaces)
             .filter { !$0.isEmpty }
@@ -400,7 +427,7 @@ open class Nats: NSObject, StreamDelegate {
 		var reply: String?
 
 		if components.count == 2 {
-			payload = components[1]
+			payload = String(components[1])
 		}
 
 		if header.count > 3 {
@@ -417,7 +444,7 @@ open class Nats: NSObject, StreamDelegate {
 		subscriptions = subscriptions.filter({ $0.subject != sub!.subject })
 		subscriptions.append(sub!)
 
-		let message = NatsMessage(subject: sub!.subject, count: sub!.count, reply: reply, payload: payload)
+        let message = NatsMessage(subject: sub!.subject, count: sub!.count, reply: reply, payload: payload, data: data)
 
 		queue.async { [weak self] in
 			guard let s = self else { return }
@@ -452,4 +479,24 @@ open class Nats: NSObject, StreamDelegate {
 	fileprivate func processPing() {
 		sendText(Proto.PONG.rawValue)
 	}
+}
+extension Data {
+    func split(separator: Data) -> [Data] {
+        var chunks: [Data] = []
+        var pos = startIndex
+        // Find next occurrence of separator after current position:
+        while let r = self[pos...].range(of: separator) {
+            // Append if non-empty:
+            if r.lowerBound > pos {
+                chunks.append(self[pos..<r.lowerBound])
+            }
+            // Update current position:
+            pos = r.upperBound
+        }
+        // Append final chunk, if non-empty:
+        if pos < endIndex {
+            chunks.append(self[pos..<endIndex])
+        }
+        return chunks
+    }
 }
